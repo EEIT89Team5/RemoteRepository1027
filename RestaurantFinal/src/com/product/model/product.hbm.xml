@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.product.model.ProductVO" table="Product">
+
+		<id name="product_id" column="product_id" >
+			<generator class="identity"/>		
+		</id>
+		
+		<property name="product_name" column="product_name"  />
+		<property name="product_price" column="product_price"  />
+
+		<many-to-one name="productKindVO" class="com.productkind.model.ProductKindVO" lazy="false">
+			<column name="product_kind"/>
+		</many-to-one>
+
+		<many-to-one name="dishClassVO" class="com.dishclass.model.DishClassVO" lazy="false">
+			<column name="product_class"/>
+		</many-to-one>
+		
+		<property name="product_pcg"  column="product_pcg" insert="false" update="false" />
+		
+		<many-to-one name="pcgVO" class="com.product.model.ProductVO" lazy="false" not-null="false">
+			<column name="product_pcg"/>
+		</many-to-one>
+		
+		<property name="product_img" column="product_img"  />
+		<property name="inMenu" column="inMenu" />
+		<property name="product_intro" column="product_intro"  />
+		
+<!-- 		套餐product_id(1對多)對應套餐菜色product_pcg -->
+		<set name="pcgDishes"  table="Product" lazy="true" 
+							cascade="delete-orphan" inverse="true" order-by="product_id asc">
+			<key><column name="product_pcg"/> </key>
+			<one-to-many class="com.product.model.ProductVO"/>
+		</set>
+		
+		<set name="pcgFormats" table="PackageFormat" lazy="true" 
+							cascade="delete-orphan" inverse="true" order-by="pcg_id asc">
+			<key><column name="pcg_id"/></key>
+			<one-to-many class="com.packageformat.model.PackageFormatVO"/>
+		</set>
+		
+        <set name="orderXs" table="OrderTableX" lazy="true" 
+        					cascade="delete-orphan" inverse="true" order-by="orderX_time asc">
+        	<key><column name="product_id"/></key>
+        	<one-to-many class="com.orderx.model.OrderXVO" />
+        </set>
+		
+	</class>
+</hibernate-mapping>
+

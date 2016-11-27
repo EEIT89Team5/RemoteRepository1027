@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.schedule.model.ScheduleVO" table="schedule" >
+        
+		<composite-id>
+		
+			<key-many-to-one name="empVO" class="com.emp.model.EmpVO" lazy="false" >
+				<column name="sched_emp" />
+			</key-many-to-one>
+			<key-property name="sched_class" column="sched_class" />
+			<key-property name="sched_date" column="sched_date" />
+			
+		</composite-id>
+        
+    </class>
+</hibernate-mapping>
+

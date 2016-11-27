@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.dishclass.model.DishClassVO" table="DishClass">
+
+		<id name="class_id" column="class_id" >
+			<generator class="identity"/>		
+		</id>
+		
+		<property name="class_name" column="class_name"  />
+		
+        <set name="products" table="Product" lazy="true"  inverse="true" order-by="product_id asc">
+        	<key><column name="product_class"/></key>
+        	<one-to-many class="com.product.model.ProductVO" />
+        </set>
+        
+        <set name="pcgFormats" table="PackageFormat" lazy="true"  inverse="true" order-by="pcg_id asc">
+        	<key><column name="class_id"/></key>
+        	<one-to-many class="com.packageformat.model.PackageFormatVO" />
+        </set>
+		
+	</class>
+</hibernate-mapping>
+

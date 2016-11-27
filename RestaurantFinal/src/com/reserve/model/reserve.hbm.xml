@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.reserve.model.ReserveVO" table="Reserve" >
+        
+        <composite-id>
+        	<key-property name="res_time" column="res_time" />
+        	<key-property name="res_phone" column="res_phone" />
+        </composite-id>
+       
+        <property name="res_name" column="res_name" />
+        <property name="res_gender" column="res_gender" />
+        <property name="res_numP" column="res_numP" />
+        <property name="res_remark" column="res_remark" />
+        
+    </class>
+</hibernate-mapping>

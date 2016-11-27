@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.member.model.MemberVO" table="Member" >
+        
+        <id name="member_id" column="member_id" >
+            <generator class="identity"/>
+        </id>
+        
+        <property name="member_name" column="member_name"  />
+        <property name="member_phone" column="member_phone" />
+        <property name="member_email" column="member_email" />
+        <property name="member_password" column="member_password" />
+        <property name="member_gender" column="member_gender" />
+        <property name="member_register" column="member_register" />
+        
+        <set name="orders" table="OrderTable" lazy="true" 
+        		cascade="delete-orphan" inverse="true" order-by="order_id asc">
+        	<key><column name="order_mem"/></key>
+        	<one-to-many class="com.order.model.OrderVO" />
+        </set>
+        
+    </class>
+</hibernate-mapping>
+

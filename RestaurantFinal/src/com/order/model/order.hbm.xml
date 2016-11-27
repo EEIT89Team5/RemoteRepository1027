@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.order.model.OrderVO" table="OrderTable" >
+        
+        <id name="order_id" column="order_id">
+            <generator class="identity"/>
+        </id>
+        
+        <property name="order_table" column="order_table" />
+        <property name="order_date" column="order_date" />
+        <property name="order_price" column="order_price"  />
+        <property name="order_numP" column="order_numP"  />
+        
+        
+<!--         <property name="order_mem" column="order_mem" type="Integer" /> -->
+        <many-to-one name="memberVO" class="com.member.model.MemberVO" lazy="false" >
+        	<column name="order_mem"  />
+        </many-to-one>
+        
+<!--         <property name="order_emp" column="order_emp" type="Integer" /> -->
+        <many-to-one name="empVO" class="com.emp.model.EmpVO" lazy="false">
+        	<column name="order_emp"  />
+        </many-to-one>
+        
+<!--         <property name="order_disc" column="order_disc" type="Integer" /> -->
+        <many-to-one name="discountVO" class="com.discount.model.DiscountVO" lazy="false" >
+			<column name="order_disc"  />
+        </many-to-one>
+        
+                
+        <property name="order_paytime" column="order_paytime" />
+        
+        <set name="orderXs" table="OrderTableX" lazy="false" 
+        					cascade="all" inverse="true" order-by="orderX_time asc">
+        	<key><column name="order_id"/></key>
+        	<one-to-many class="com.orderx.model.OrderXVO" />
+        </set>
+        
+    </class>
+</hibernate-mapping>
+

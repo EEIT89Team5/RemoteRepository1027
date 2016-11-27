@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.space.model.SpaceVO" table="Space" >
+        
+        <id name="space_id" column="space_id">
+            <generator class="identity"/>
+        </id>
+       
+        <property name="space_name" column="space_name" />
+        <property name="space_size" column="space_size" />
+        
+        <set name="spacexs" table="SpaceX" lazy="false" cascade="all" inverse="true">
+        	<key><column name="space_id"></column></key>
+        	<one-to-many class="com.spacex.model.SpaceXVO" />
+        </set>
+        
+    </class>
+</hibernate-mapping>

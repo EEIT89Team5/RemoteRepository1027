@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.spacex.model.SpaceXVO" table="SpaceX" >
+        
+        <composite-id>
+        	<key-many-to-one name="spaceVO" class="com.space.model.SpaceVO" lazy="false">
+        		<column name="space_id"></column>
+        	</key-many-to-one>
+<!--         	<key-property name="space_id" column="space_id" /> -->
+        	<key-property name="table_id" column="table_id" />
+        </composite-id>
+       
+        <property name="table_maxP" column="table_maxP" />
+        <property name="table_x" column="table_x" />
+        <property name="table_y" column="table_y" />
+        <property name="table_shape" column="table_shape" />
+        
+    </class>
+</hibernate-mapping>

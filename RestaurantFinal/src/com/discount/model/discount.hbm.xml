@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.discount.model.DiscountVO" table="Discount" >
+        
+        <id name="disc_id" column="disc_id">
+            <generator class="identity"/>
+        </id>
+        
+        <property name="disc_name" column="disc_name"  />
+        <property name="disc_value" column="disc_value" />
+        
+        <set name="orders" table="OrderTable" lazy="true" 
+        		cascade="delete-orphan" inverse="true" order-by="order_id asc">
+        	<key><column name="order_disc" /></key>
+        	<one-to-many class="com.order.model.OrderVO" />
+        </set>
+        
+    </class>
+</hibernate-mapping>
+

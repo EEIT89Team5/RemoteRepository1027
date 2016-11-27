@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.packageformat.model.PackageFormatVO" table="PackageFormat">
+	
+		<composite-id>
+			<key-many-to-one name="productVO" class="com.product.model.ProductVO" lazy="false">
+				<column name="pcg_id"/>
+			</key-many-to-one>
+			
+			<key-many-to-one name="dishClassVO" class="com.dishclass.model.DishClassVO" lazy="false">
+				<column name="class_id"/>
+			</key-many-to-one>
+		</composite-id>
+
+		<property name="class_number" column="class_number"/>
+
+	</class>
+</hibernate-mapping>
+

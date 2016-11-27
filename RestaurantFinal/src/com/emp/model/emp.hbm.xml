@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.emp.model.EmpVO" table="Employee" >
+        
+        <id name="emp_id" column="emp_id" >
+            <generator class="identity"/>
+        </id>
+        
+        <property name="emp_name" column="emp_name" />
+        <property name="emp_gender" column="emp_gender"/>
+        <property name="emp_title" column="emp_title"/>
+        <property name="emp_fulltime" column="emp_fulltime"/>
+        <property name="emp_salary" column="emp_salary"/>
+        <property name="emp_birthday" column="emp_birthday"/>
+        <property name="emp_idnumber" column="emp_idnumber"/>
+        <property name="emp_phone" column="emp_phone"/>
+        <property name="emp_addr" column="emp_addr"/>
+        <property name="emp_hiredate" column="emp_hiredate"/>
+        <property name="emp_email" column="emp_email"/>
+        <property name="emp_password" column="emp_password"/>
+        <property name="emp_status" column="emp_status"/>
+        
+        <set name="orders" table="OrderTable" lazy="true" 
+        		cascade="delete-orphan" inverse="true" order-by="order_id asc">
+        	<key><column name="order_emp"/></key>
+        	<one-to-many class="com.order.model.OrderVO" />
+        </set>
+        
+    </class>
+</hibernate-mapping>
+

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.table.model.TableVO" table="SpaceTable" >
+        
+        <id name="table_name" column="table_name">
+            <generator class="native"/>
+        </id>
+       
+        <property name="table_x" column="table_x" />
+        <property name="table_y" column="table_y" />
+        <property name="table_shape" column="table_shape" />
+        <property name="table_maxP" column="table_maxP" />
+        <property name="table_numP" column="table_numP" />
+        <property name="table_status" column="table_status" />
+        <property name="table_time" column="table_time" />
+        <property name="table_paid" column="table_paid" />
+        
+    </class>
+</hibernate-mapping>

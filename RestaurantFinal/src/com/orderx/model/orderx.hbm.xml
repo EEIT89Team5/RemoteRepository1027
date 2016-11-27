@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.orderx.model.OrderXVO" table="OrderTableX">
+
+		<composite-id>
+		
+			<key-many-to-one name="orderVO" class="com.order.model.OrderVO" lazy="false" >
+				<column name="order_id" />
+			</key-many-to-one>
+		
+			<key-many-to-one name="productVO" class="com.product.model.ProductVO" lazy="false">
+				<column name="product_id" />
+			</key-many-to-one>
+			
+			<key-property name="orderX_time" column="orderX_time" />
+		</composite-id>
+
+		<property name="orderX_num" column="orderX_num" />
+		<property name="orderX_status" column="orderX_status" />
+		
+
+	</class>
+</hibernate-mapping>
+
